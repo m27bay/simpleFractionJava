@@ -1,3 +1,4 @@
+package exo1;
 public class Fraction {
     private int a;
 	private int b;

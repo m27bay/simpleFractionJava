@@ -1,3 +1,4 @@
+package exo1;
 public class Main {
     static void printf(String mString) {
         System.out.println(mString);
