@@ -11,12 +11,16 @@ public class Main {
 		// Character c = 'a';
 		// System.out.println(c);
 		// System.out.println((char)(c+1));
-		ChaineCryptee cc = new ChaineCryptee("bonjourz", 3);
-		printf(cc.toString());
+		// ####################################################### //
+		// ChaineCryptee cc = new ChaineCryptee("bonjourz", 3);
+		// printf(cc.toString());
 		
-		printf("chiffre = " + cc.chiffrer());
-		cc.setChaineChiffre(cc.chiffrer());
+		// printf("chiffre = " + cc.chiffrer());
+		// cc.setChaineChiffre(cc.chiffrer());
 		
-		printf("clair = " + cc.dechiffer());
+		// printf("clair = " + cc.dechiffer());
+		// ####################################################### //
+		ChaineCryptee2 cc2 = new ChaineCryptee2("bonjouz", 3);
+		printf("\nChiffree = " + cc2.chiffrer());
 	}
 }
