@@ -23,47 +23,55 @@ public class Client {
 	void seConnecter(Serveur s) {
 		if(s == null) {
 			System.out.println(this.toString() + " => Aucun serveur à cette adresse.");
-			return;
 		}
-		if(s == sConnectee) {
+		else if(s == sConnectee) {
 			System.out.println(this.toString() + " => Déjà connectée au serveur.");
-			return;
 		}
-		System.out.println(this.toString() + " => Connexion au serveur en cours...");
-		if(s.demanderConnexion(this)) {
-			System.out.println(this.toString() + " => Connectée.");
-			sConnectee = s;
-			return;
+		else {
+			System.out.println(this.toString() + " => Connexion au serveur en cours...");
+			if(s.demanderConnexion(this)) {
+				System.out.println(this.toString() + " => Connectée.");
+				sConnectee = s;
+			}
+			else {
+				System.out.println(this.toString() + " => Connexion impossible.");
+				sConnectee = null;
+			}
 		}
-
-		System.out.println(this.toString() + " => Connexion impossible.");
-		sConnectee = null;
 	}
 	
 	void seDeconnecter() {
 		if(sConnectee == null) {
 			System.out.println(this.toString() + " => Vous n'êtes pas connectée.");
-			return;
 		}
-		if(sConnectee.deconnexion(this)) {
+		else if(sConnectee.deconnexion(this)) {
 			System.out.println(this.toString() + " => Vous êtes désormais déconnectée.");
-			return;
 		}
-
-		System.out.println(this.toString() + " => Erreur lors de la déconnexion.");
-		return;
+		else {
+			System.out.println(this.toString() + " => Erreur lors de la déconnexion.");
+		}
 	}
-
+	
 	void envoyer(String message) {
-		if(message == null || sConnectee == null) {
-			return;
+		if(message == null) {
+			System.out.println(this.toString() + " => Erreur lors de l'envoie, message nul.");
 		}
-		
-		sConnectee.diffuser(message);
+		else if(sConnectee == null) {
+			System.out.println(this.toString() + " => Erreur lors de l'envoie, vous n'êtes connectee à aucun serveur.");
+		}
+		else {
+			System.out.println(this.toString() + " => Message envoyé au serveur.");
+			sConnectee.diffuser(message);
+		}
 	}
-
+	
 	void recevoir(String message) {
-		System.out.println(message);
+		if(message == null) {
+			System.out.println(this.toString() + " => Erreur lors de l'envoie, message nul.");
+		}
+		else {
+			System.out.println(this.toString() + " => Nouveau message recu : " + message);
+		}
 	}
 
 	@Override

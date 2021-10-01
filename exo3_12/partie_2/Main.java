@@ -27,7 +27,24 @@ public class Main {
 		Client c3 = new Client("Jacques");
 		c3.seDeconnecter();
 		c3.seConnecter(null);
-
+		
 		printf(s.toString());
+		
+		printf("\n");
+		Client c4 = new Client("Henry");
+		c4.envoyer("Bonjour");
+		
+		printf("\n");
+		Client c5 = new Client("Yvon");
+		c5.seConnecter(s);
+		c5.envoyer("Bonjour");
+		
+		printf("\n");
+		Client c6 = new Client("Gerard");
+		c6.seConnecter(s);
+		printf(s.toString());
+
+		printf("\n");
+		c5.envoyer("Bonjour");
 	}
 }

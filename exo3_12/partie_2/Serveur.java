@@ -12,7 +12,7 @@ public class Serveur {
 
 	int estConnectee(Client c) {
 		if(c == null) {
-			System.out.println("Aucun client à cette adresse.");
+			System.out.println("Serveur : Aucun client à cette adresse.");
 			return -1;
 		}
 
@@ -27,10 +27,10 @@ public class Serveur {
 
 	boolean demanderConnexion(Client c) {
 		if(c == null) {
-			System.out.println("Aucun client à cette adresse.");
+			System.out.println("Serveur : Aucun client à cette adresse.");
 			return false;
 		}
-		if(nbrClient + 1 < NBR_MAX_CLIENT) {
+		else if(nbrClient + 1 < NBR_MAX_CLIENT) {
 			listeClient[nbrClient] = c;
 			nbrClient += 1;
 			return true;
@@ -41,36 +41,46 @@ public class Serveur {
 
 	boolean deconnexion(Client c) {
 		if(c == null) {
-			System.out.println("Aucun client à cette adresse.");
+			System.out.println("Serveur : Aucun client à cette adresse.");
 			return false;
 		}
-		if(nbrClient == 0) {
-			System.out.println("Aucun client sur ce serveur.");
+		else if(nbrClient == 0) {
+			System.out.println("Serveur : Aucun client sur ce serveur.");
 			return false;
 		}
 		int posClient = estConnectee(c);
 		if(posClient != -1) {
-			listeClient[posClient] = listeClient[nbrClient - 1];
-			listeClient[nbrClient - 1] = null;
+			if(posClient == nbrClient - 1) {
+				listeClient[nbrClient - 1] = null;
+			}
+			else {
+				listeClient[posClient] = listeClient[nbrClient - 1];
+				listeClient[nbrClient - 1] = null;
+			}
 			nbrClient -= 1;
 			
 			return true;
 		}
-		
 		
 		return false;
 	}
 	
 	void diffuser(String message) {
 		if(message == null) {
-			return;
+			System.out.println("Serveur : Le message ne peut être diffusé,le message est nul.");
 		}
-		if(nbrClient == 1) {
-			System.out.println("Le message ne peut être diffusé, aucun client sur ce serveur.");
-			return;
+		else if(nbrClient == 1) {
+			System.out.println("Serveur : Le message ne peut être diffusé, aucun client sur ce serveur.");
 		}
-		for(Client ci : listeClient) {
-			ci.recevoir(message);
+		else {
+			for(Client ci : listeClient) {
+				if(ci == null) {
+					continue;
+				}
+				else {
+					ci.recevoir(message);
+				}
+			}
 		}
 	}
 
@@ -80,9 +90,16 @@ public class Serveur {
 		if(nbrClient == 0) {
 			return chaine + "Serveur vide... *bruit de corbeaux*";
 		}
-		for(Client c : listeClient) {
-			chaine += c.toString() + "\n";
+		else {
+			for(Client c : listeClient) {
+				if(c == null) {
+					continue;
+				}
+				else {
+					chaine += c.toString() + "\n";
+				}
+			}
+			return chaine;
 		}
-		return chaine;
 	}
 }
