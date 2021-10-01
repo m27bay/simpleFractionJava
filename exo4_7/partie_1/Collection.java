@@ -3,8 +3,6 @@ package exo4_7.partie_1;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.Doc;
-
 public class Collection {
 	private List<Document> listeDocument;
 	private static final int NBR_MAX_DOC = 50;
