@@ -2,9 +2,9 @@ package exo4_7.partie_3;
 
 public abstract class Element {
 	
-	private String nom;
-	private String taille;
-	private Dossier pere;
+	protected String nom;
+	protected int taille;
+	protected Dossier pere;
 
 	Element(String nom) {
 		this.nom = nom;
@@ -22,12 +22,8 @@ public abstract class Element {
 		return nom;
 	}
 
-	public String getTaille() {
-		return taille;
-	}
-
 	@Override
 	public String toString() {
-		return taille + "octects, " + nom;
+		return nom + ", " + taille +  " o";
 	}
 }

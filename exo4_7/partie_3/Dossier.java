@@ -28,6 +28,9 @@ public class Dossier extends Element {
 	void ajoutFils(Element e) {
 		fils.add(e);
 		e.setPere(this);
+		if(e instanceof Fichier) {
+			taille += e.taille;
+		}
 	}
 
 	public void afficher(int nbrEspace, Dossier d) {
@@ -38,16 +41,16 @@ public class Dossier extends Element {
 					for(int i = 0; i < nbrEspace; ++i) {
 						System.out.print("    ");
 					}
-					// System.out.print(eConvert.toString());
-					System.out.print(eConvert.getNom() + "\n");
+					System.out.print(eConvert.toString());
+					// System.out.print(eConvert.getNom() + "\n");
 				}
 				else {
 					Dossier eConvert = (Dossier)e;
 					for(int i = 0; i < nbrEspace; ++i) {
 						System.out.print("    ");
 					}
-					// System.out.print(eConvert.toString() + "\n");
-					System.out.print(eConvert.getNom() + "\n");
+					System.out.print(eConvert.toString() + "\n");
+					// System.out.print(eConvert.getNom() + "\n");
 					afficher(nbrEspace + 1, eConvert);
 				}
 			}

@@ -29,5 +29,11 @@ public class Main {
 		gestion.ajout(document1);
 		gestion.ajout(document2);
 		gestion.afficherRacine();
+
+
+		gestion.arriere();
+		Fichier imageDefaut = new Fichier();
+		
+		gestion.afficherRacine();
 	}
 }
