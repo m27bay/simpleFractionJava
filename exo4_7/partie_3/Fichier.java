@@ -14,6 +14,6 @@ public class Fichier extends Element {
 
 	@Override
 	public String toString() {
-		return super.toString() + "." + ext;
+		return super.toString() + "." + ext + "\n";
 	}
 }
