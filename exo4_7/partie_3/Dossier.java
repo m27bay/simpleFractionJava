@@ -30,6 +30,14 @@ public class Dossier extends Element {
 		e.setPere(this);
 		if(e instanceof Fichier) {
 			taille += e.taille;
+
+			Dossier courant = this;
+			Dossier pere = courant.getPere();
+			while(pere != null) {
+				pere.setTaille(pere.getTaille() + courant.getTaille());
+				courant = pere;
+				pere = pere.getPere();
+			}
 		}
 	}
 
