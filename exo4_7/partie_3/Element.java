@@ -1,6 +1,6 @@
 package exo4_7.partie_3;
 
-public abstract class Element {
+public class Element {
 	
 	protected String nom;
 	protected int taille;
@@ -20,6 +20,14 @@ public abstract class Element {
 
 	public String getNom() {
 		return nom;
+	}
+
+	public int getTaille() {
+		return taille;
+	}
+
+	public void setTaille(int taille) {
+		this.taille = taille;
 	}
 
 	@Override
