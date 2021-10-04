@@ -30,10 +30,17 @@ public class Main {
 		gestion.ajout(document2);
 		gestion.afficherRacine();
 
-
+		System.out.println(gestion.pwd() + "\n");
 		gestion.arriere();
-		Fichier imageDefaut = new Fichier();
+		gestion.avant(Image);
+		Fichier defaut = new Fichier();
+		gestion.ajout(defaut);
+		gestion.arriere();
 		
+		Fichier defaut2 = new Fichier();
+		gestion.ajout(Document, defaut2);
+		// System.out.println(gestion.pwd() + "\n");
+
 		gestion.afficherRacine();
 	}
 }
